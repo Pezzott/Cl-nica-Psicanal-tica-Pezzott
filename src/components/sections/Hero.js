@@ -5,9 +5,9 @@ import { Link as ScrollLink } from 'react-scroll';
 
 const HeroSection = styled.section`
   min-height: 100vh;
-  position: relative;
   display: flex;
   align-items: center;
+  position: relative;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url('https://images.unsplash.com/photo-1527167598984-5c4e98c2f230?q=80&w=2070') center/cover;
   
@@ -19,6 +19,11 @@ const HeroSection = styled.section`
     right: 0;
     bottom: 0;
     background: linear-gradient(45deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%);
+  }
+
+  @media (max-width: 768px) {
+    padding: 80px 0 40px;
+    text-align: center;
   }
 `;
 
@@ -36,6 +41,10 @@ const Container = styled.div`
   @media (max-width: 1024px) {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 15px;
   }
 `;
 
@@ -74,7 +83,7 @@ const Subtitle = styled(motion.p)`
 const ButtonGroup = styled(motion.div)`
   display: flex;
   gap: 20px;
-  
+
   @media (max-width: 768px) {
     flex-direction: column;
   }

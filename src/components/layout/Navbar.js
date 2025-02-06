@@ -9,30 +9,18 @@ const Nav = styled.nav`
   left: 0;
   right: 0;
   z-index: 1000;
-
-  /*
-    Para a Home:
-      - se não rolado: fundo transparente;
-      - se rolado: fundo branco.
-    Para o Blog:
-      - se não rolado: degradê escuro;
-      - se rolado: degradê claro.
-  */
   background: ${({ isBlogPage, isScrolled }) => {
     if (isBlogPage) {
       return isScrolled
         ? 'linear-gradient(135deg, #F1FAF6 0%, #FFFFFF 100%)'
-        : 'linear-gradient(135deg, #6A9A96 0%, #8BB7AC 100%)';
+        : 'linear-gradient(135deg, #2C3E50 0%, #34495E 100%)';
     } else {
-      return isScrolled ? 'white' : 'transparent';
+      return isScrolled ? 'rgba(255, 255, 255, 0.95)' : 'transparent';
     }
   }};
-
-  /* Transição idêntica para Home e Blog */
-  transition: background 0.6s ease-in-out, box-shadow 0.6s ease-in-out;
-
+  transition: all 0.3s ease-in-out;
   box-shadow: ${({ isScrolled }) =>
-    isScrolled ? '0 2px 15px rgba(0,0,0,0.15)' : 'none'};
+    isScrolled ? '0 2px 15px rgba(0,0,0,0.1)' : 'none'};
 `;
 
 const Container = styled.div`
@@ -42,6 +30,10 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 768px) {
+    padding: 10px 15px;
+  }
 `;
 
 const Logo = styled(RouterLink)`
@@ -55,6 +47,11 @@ const Logo = styled(RouterLink)`
     width: 50px;
     object-fit: cover;
     border-radius: 50%;
+
+    @media (max-width: 768px) {
+      height: 40px;
+      width: 40px;
+    }
   }
 
   span {
@@ -64,20 +61,25 @@ const Logo = styled(RouterLink)`
       if (isBlogPage) {
         return isScrolled ? '#2C3E50' : '#fff';
       } else {
-        return isScrolled ? '#333' : '#fff';
+        return isScrolled ? '#2C3E50' : '#fff';
       }
     }};
-    transition: color 0.6s ease-in-out;
+    transition: color 0.3s ease-in-out;
+
+    @media (max-width: 768px) {
+      font-size: 1.2rem;
+    }
+
+    @media (max-width: 480px) {
+      display: none;
+    }
   }
 `;
 
-const MenuLinks = styled.div`
-  display: flex;
-  gap: 30px;
-  align-items: center;
-`;
-
-const NavLinkRouter = styled(RouterLink)`
+const MenuButton = styled.button`
+  display: none;
+  background: none;
+  border: none;
   color: ${({ isBlogPage, isScrolled }) => {
     if (isBlogPage) {
       return isScrolled ? '#2C3E50' : '#fff';
@@ -85,14 +87,70 @@ const NavLinkRouter = styled(RouterLink)`
       return isScrolled ? '#333' : '#fff';
     }
   }};
-  text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: 500;
-  transition: color 0.6s ease-in-out;
+  font-size: 1.5rem;
   cursor: pointer;
+  padding: 5px;
+  transition: color 0.3s ease;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
 
   &:hover {
     color: #8FBC8F;
+  }
+`;
+
+const MenuLinks = styled.div`
+  display: flex;
+  gap: 30px;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: ${({ isBlogPage, isScrolled }) => {
+      if (isBlogPage) {
+        return isScrolled
+          ? 'linear-gradient(135deg, #F1FAF6 0%, #FFFFFF 100%)'
+          : 'linear-gradient(135deg, #2C3E50 0%, #34495E 100%)';
+      } else {
+        return isScrolled ? 'rgba(255, 255, 255, 0.95)' : '#2C3E50';
+      }
+    }};
+    padding: 20px;
+    gap: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+`;
+
+const NavLinkRouter = styled(RouterLink)`
+  color: ${({ isBlogPage, isScrolled }) => {
+    if (isBlogPage) {
+      return isScrolled ? '#2C3E50' : '#fff';
+    } else {
+      return isScrolled ? '#2C3E50' : '#fff';
+    }
+  }};
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+  }
+
+  &:hover {
+    color: ${props => props.theme.colors.primary[400]};
   }
 `;
 
@@ -101,40 +159,30 @@ const NavLinkScroll = styled(ScrollLink)`
     if (isBlogPage) {
       return isScrolled ? '#2C3E50' : '#fff';
     } else {
-      return isScrolled ? '#333' : '#fff';
+      return isScrolled ? '#2C3E50' : '#fff';
     }
   }};
   text-decoration: none;
   font-size: 1.1rem;
   font-weight: 500;
-  transition: color 0.6s ease-in-out;
+  transition: color 0.3s ease-in-out;
   cursor: pointer;
 
-  &:hover {
-    color: #8FBC8F;
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
   }
-`;
-
-const BlogLink = styled(RouterLink)`
-  color: ${({ isBlogPage, isScrolled }) => {
-    if (isBlogPage) {
-      return isScrolled ? '#2C3E50' : '#fff';
-    } else {
-      return isScrolled ? '#333' : '#fff';
-    }
-  }};
-  text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: 500;
-  transition: color 0.6s ease-in-out;
 
   &:hover {
-    color: #8FBC8F;
+    color: ${props => props.theme.colors.primary[400]};
   }
 `;
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const isHomePage = location.pathname === '/';
   const isBlogPage = location.pathname.includes('/blog');
@@ -149,51 +197,102 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isHomePage, isBlogPage]);
 
-  const renderNavLink = (to, text) => {
-    if (isHomePage) {
-      return (
-        <NavLinkScroll
-          to={to}
-          spy={true}
-          smooth={true}
-          offset={-70}
-          duration={500}
-          isScrolled={isScrolled}
-          isBlogPage={isBlogPage}
-        >
-          {text}
-        </NavLinkScroll>
-      );
-    } else {
-      return (
-        <NavLinkRouter
-          to={`/#${to}`}
-          isScrolled={isScrolled}
-          isBlogPage={isBlogPage}
-        >
-          {text}
-        </NavLinkRouter>
-      );
-    }
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
   };
 
   return (
     <Nav isScrolled={isScrolled} isBlogPage={isBlogPage}>
       <Container>
-        <Logo to="/" isScrolled={isScrolled} isBlogPage={isBlogPage}>
+        <Logo to="/" isScrolled={isScrolled} isBlogPage={isBlogPage} onClick={closeMenu}>
           <img src="/img/Logo.JPG" alt="Clínica Psicanalítica Pezzott" />
           <span>Clínica Psicanalítica Pezzott</span>
         </Logo>
 
-        <MenuLinks>
-          {renderNavLink('inicio', 'Início')}
-          {renderNavLink('sobre', 'Sobre')}
-          {renderNavLink('como-funciona', 'Como Funciona')}
-          {renderNavLink('servicos', 'Serviços')}
-          <BlogLink to="/blog" isScrolled={isScrolled} isBlogPage={isBlogPage}>
+        <MenuButton
+          onClick={toggleMenu}
+          isScrolled={isScrolled}
+          isBlogPage={isBlogPage}
+          aria-label="Menu"
+        >
+          <i className={`fas fa-${isMenuOpen ? 'times' : 'bars'}`} />
+        </MenuButton>
+
+        <MenuLinks isOpen={isMenuOpen} isScrolled={isScrolled} isBlogPage={isBlogPage}>
+          {isHomePage ? (
+            <>
+              <NavLinkScroll
+                to="inicio"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+                isScrolled={isScrolled}
+                isBlogPage={isBlogPage}
+                onClick={closeMenu}
+              >
+                Início
+              </NavLinkScroll>
+              <NavLinkScroll
+                to="sobre"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+                isScrolled={isScrolled}
+                isBlogPage={isBlogPage}
+                onClick={closeMenu}
+              >
+                Sobre
+              </NavLinkScroll>
+              <NavLinkScroll
+                to="servicos"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+                isScrolled={isScrolled}
+                isBlogPage={isBlogPage}
+                onClick={closeMenu}
+              >
+                Serviços
+              </NavLinkScroll>
+              <NavLinkScroll
+                to="contato"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+                isScrolled={isScrolled}
+                isBlogPage={isBlogPage}
+                onClick={closeMenu}
+              >
+                Contato
+              </NavLinkScroll>
+            </>
+          ) : (
+            <>
+              <NavLinkRouter to="/" isScrolled={isScrolled} isBlogPage={isBlogPage}>
+                Início
+              </NavLinkRouter>
+              <NavLinkRouter to="/#sobre" isScrolled={isScrolled} isBlogPage={isBlogPage}>
+                Sobre
+              </NavLinkRouter>
+              <NavLinkRouter to="/#servicos" isScrolled={isScrolled} isBlogPage={isBlogPage}>
+                Serviços
+              </NavLinkRouter>
+              <NavLinkRouter to="/#contato" isScrolled={isScrolled} isBlogPage={isBlogPage}>
+                Contato
+              </NavLinkRouter>
+            </>
+          )}
+          <NavLinkRouter to="/blog" isScrolled={isScrolled} isBlogPage={isBlogPage}>
             Blog
-          </BlogLink>
-          {renderNavLink('contato', 'Contato')}
+          </NavLinkRouter>
         </MenuLinks>
       </Container>
     </Nav>

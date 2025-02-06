@@ -4,22 +4,34 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const BlogSection = styled.section`
-  padding: 100px 0;
+  padding: 120px 0 60px;
   min-height: 100vh;
   background: linear-gradient(135deg, #F1FAF6 0%, #FFFFFF 100%);
   transition: all 0.6s ease-in-out;
+
+  @media (max-width: 768px) {
+    padding: 100px 0 40px;
+  }
 `;
 
 const Container = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
+
+  @media (max-width: 768px) {
+    padding: 0 15px;
+  }
 `;
 
 const Header = styled.div`
   text-align: center;
   margin-bottom: 60px;
   transition: all 0.6s ease-in-out;
+
+  @media (max-width: 768px) {
+    margin-bottom: 40px;
+  }
 `;
 
 const Title = styled(motion.h1)`
@@ -28,6 +40,11 @@ const Title = styled(motion.h1)`
   font-family: 'Playfair Display', serif;
   color: #2C3E50;
   transition: all 0.6s ease-in-out;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
 `;
 
 const Subtitle = styled(motion.p)`
@@ -37,6 +54,11 @@ const Subtitle = styled(motion.p)`
   line-height: 1.6;
   color: #6A9A96;
   transition: all 0.6s ease-in-out;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    padding: 0 15px;
+  }
 `;
 
 const Grid = styled.div`
@@ -44,6 +66,12 @@ const Grid = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 30px;
   margin-top: 40px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 30px;
+  }
 `;
 
 const BlogCard = styled(motion.article)`
@@ -53,6 +81,10 @@ const BlogCard = styled(motion.article)`
   box-shadow: 0 8px 20px rgba(106, 154, 150, 0.15);
   transition: all 0.3s ease;
   position: relative;
+
+  @media (max-width: 768px) {
+    border-radius: 15px;
+  }
 
   &::before {
     content: '';
@@ -66,10 +98,18 @@ const BlogCard = styled(motion.article)`
     transition: opacity 0.3s ease;
     border-radius: 20px;
     pointer-events: none;
+
+    @media (max-width: 768px) {
+      border-radius: 15px;
+    }
   }
 
   &:hover {
     transform: translateY(-8px);
+
+    @media (max-width: 768px) {
+      transform: translateY(-4px);
+    }
 
     &::before {
       opacity: 1;
@@ -82,6 +122,10 @@ const BlogImage = styled.div`
   height: 200px;
   overflow: hidden;
   position: relative;
+
+  @media (max-width: 768px) {
+    height: 180px;
+  }
 
   &::after {
     content: '';
@@ -107,6 +151,10 @@ const BlogImage = styled.div`
 
 const BlogContent = styled.div`
   padding: 25px;
+
+  @media (max-width: 768px) {
+    padding: 20px;
+  }
 `;
 
 const BlogTitle = styled.h3`
@@ -114,6 +162,11 @@ const BlogTitle = styled.h3`
   color: #2C3E50;
   margin-bottom: 15px;
   font-family: 'Playfair Display', serif;
+
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+  }
 `;
 
 const BlogExcerpt = styled.p`
@@ -121,6 +174,11 @@ const BlogExcerpt = styled.p`
   color: #4A5568;
   line-height: 1.6;
   margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+  }
 `;
 
 const BlogMeta = styled.div`
@@ -129,6 +187,12 @@ const BlogMeta = styled.div`
   align-items: center;
   color: #2C7A7B;
   font-size: 0.9rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
 `;
 
 const ReadMoreButton = styled(Link)`
@@ -142,6 +206,10 @@ const ReadMoreButton = styled(Link)`
   background: none;
   border: none;
   padding: 0;
+
+  @media (max-width: 768px) {
+    padding: 5px 0;
+  }
 
   &:hover {
     color: #234E52;
