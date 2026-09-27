@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&family=Source+Sans+3:wght@400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Literata", Georgia, serif;
+  --font-sans: "Source Sans 3", system-ui, sans-serif;
+  --ink: #243447;
+  --sage: #6a9a96;
+  --paper: #f6f3ec;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-paper text-ink antialiased;
+  background-image: radial-gradient(
+      ellipse at 15% -10%,
+      rgba(106, 154, 150, 0.12),
+      transparent 42%
+    ),
+    radial-gradient(ellipse at 90% 110%, rgba(139, 111, 71, 0.08), transparent 40%);
+  min-height: 100vh;
+}
+
+::selection {
+  background: rgba(106, 154, 150, 0.28);
+}
+
+@layer components {
+  .container-measure {
+    @apply mx-auto w-full max-w-measure px-5 sm:px-8;
+  }
+
+  .eyebrow {
+    @apply font-sans text-xs font-semibold uppercase tracking-[0.18em] text-sage-deep;
+  }
+
+  .prose-editorial {
+    @apply prose prose-lg max-w-prose prose-headings:font-display prose-headings:text-ink prose-headings:font-semibold prose-p:font-body prose-p:text-ink-soft prose-li:font-body prose-li:text-ink-soft prose-a:text-sage-deep prose-strong:text-ink;
+  }
+}
