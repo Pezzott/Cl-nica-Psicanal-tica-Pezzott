@@ -4,7 +4,7 @@ export const siteConfig = {
   tagline: "Psicanálise para o cotidiano — com profundidade e acolhimento",
   description:
     "Plataforma de conhecimento em psicanálise. Temas da vida aprofundados com clareza, seriedade e acolhimento — extensão do conteúdo no Instagram.",
-  url: "https://clinica-psicanalica-pezzott.vercel.app",
+  url: "https://cl-nica-psicanal-tica-pezzott-mu.vercel.app",
   locale: "pt-BR",
   contact: {
     email: "clinicapsicanaliticapezzott@gmail.com",
@@ -14,14 +14,14 @@ export const siteConfig = {
     address: "R. Aldemar Pereira de Barros, 21 - Centro, Jundiaí - SP, 13201-796",
   },
   social: {
-    instagram: "https://www.instagram.com/",
+    instagram: "https://www.instagram.com/adenilton_pezzott/",
     instagramLabel: "Instagram",
   },
 };
 
 export const navLinks = [
   { href: "/", label: "Início" },
-  { href: "/conteudos", label: "Conteúdos" },
+  { href: "/artigos", label: "Artigos" },
   { href: "/temas", label: "Temas" },
   { href: "/sobre", label: "Sobre" },
   { href: "/contato", label: "Contato" },

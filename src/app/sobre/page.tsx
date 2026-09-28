@@ -51,7 +51,7 @@ export default function SobrePage() {
             </p>
           </div>
           <div className="mt-8 flex flex-wrap gap-4">
-            <ButtonLink href="/conteudos">Explorar conteúdos</ButtonLink>
+            <ButtonLink href="/artigos">Explorar artigos</ButtonLink>
             <ButtonLink href="/contato" variant="secondary">
               Falar conosco
             </ButtonLink>

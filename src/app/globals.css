@@ -19,12 +19,9 @@ html {
 
 body {
   @apply bg-paper text-ink antialiased;
-  background-image: radial-gradient(
-      ellipse at 15% -10%,
-      rgba(106, 154, 150, 0.12),
-      transparent 42%
-    ),
-    radial-gradient(ellipse at 90% 110%, rgba(139, 111, 71, 0.08), transparent 40%);
+  background-image:
+    radial-gradient(ellipse at 12% -8%, rgba(106, 154, 150, 0.14), transparent 44%),
+    radial-gradient(ellipse at 92% 108%, rgba(139, 111, 71, 0.09), transparent 42%);
   min-height: 100vh;
 }
 
@@ -43,5 +40,17 @@ body {
 
   .prose-editorial {
     @apply prose prose-lg max-w-prose prose-headings:font-display prose-headings:text-ink prose-headings:font-semibold prose-p:font-body prose-p:text-ink-soft prose-li:font-body prose-li:text-ink-soft prose-a:text-sage-deep prose-strong:text-ink;
+  }
+
+  .reveal {
+    @apply translate-y-5 opacity-0 transition duration-700 ease-out;
+  }
+
+  .reveal-in {
+    @apply translate-y-0 opacity-100;
+  }
+
+  .link-underline {
+    @apply bg-[linear-gradient(currentColor,currentColor)] bg-[length:0%_1px] bg-left-bottom bg-no-repeat transition-[background-size] duration-300 hover:bg-[length:100%_1px];
   }
 }
