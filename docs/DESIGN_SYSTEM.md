@@ -20,11 +20,20 @@
 
 ## Composição
 
-1. **Home:** hero full-bleed (marca + 1 headline + 1 frase + CTAs) → destaques com reveal → mapa de temas → ponte Instagram → sobre
+1. **Home:** hero full-bleed com **zona editorial de leitura** (overlay assimétrico + tipografia clara) → destaques com reveal → mapa de temas → ponte Instagram → sobre
 2. **Artigos:** header editorial + chips de tema + grade com reveal
 3. **Artigo:** breadcrumb + hero tipográfico + progresso de leitura + corpo + relacionados
 4. **Temas:** intro forte + grade refinada
 5. **Sobre / Contato:** conteúdo-first; contato discreto
+
+### Hero (legibilidade)
+
+- Overlay localizado (`.hero-overlay`): escurece a esquerda/centro onde está o texto; preserva luminosidade e rostos à direita. No mobile, o gradiente vertical é mais denso na faixa do texto.
+- Véu radial suave (`.hero-copy::before`): reforça a zona editorial sem caixa opaca.
+- Crop responsivo (`.hero-photo`): `object-position` distinto em mobile/desktop.
+- Hierarquia tipográfica no hero: título branco pleno; lede ~90% (`rgba(255,252,247,0.9)`); eyebrow branco pleno com peso bold.
+- CTA secundário no hero: borda clara + fundo translúcido discreto (`secondaryLight`), sem caixa opaca.
+- Contraste alvo: WCAG AA nos textos menores (eyebrow/lede); medido sobre a composição final, não só sobre a cor tipográfica isolada.
 
 ## Motion
 

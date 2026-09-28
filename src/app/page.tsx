@@ -23,28 +23,29 @@ export default function HomePage() {
           alt=""
           fill
           priority
-          className="object-cover"
+          className="hero-photo"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/78 via-ink/55 to-ink/25" />
-        <div className="absolute inset-0 bg-gradient-to-t from-paper via-transparent to-ink/20" />
+        <div className="hero-overlay absolute inset-0" aria-hidden="true" />
 
-        <div className="container-measure relative flex min-h-[88vh] flex-col justify-end pb-16 pt-28 lg:pb-24 lg:pt-32">
-          <p className="font-sans text-xs font-semibold uppercase tracking-[0.22em] text-sage-soft">
-            {siteConfig.name}
-          </p>
-          <h1 className="mt-5 max-w-3xl font-display text-4xl font-semibold leading-[1.08] tracking-tight text-paper-white sm:text-5xl lg:text-6xl xl:text-[4.15rem]">
-            Clareza sobre o que você vive — com profundidade psicanalítica.
-          </h1>
-          <p className="mt-6 max-w-xl font-body text-lg leading-relaxed text-paper-white/88 sm:text-xl">
-            Conceitos com densidade. Situações do cotidiano. Uma biblioteca para reconhecer
-            a própria vida — e saber o que fazer com o que se entendeu.
-          </p>
-          <div className="mt-9 flex flex-wrap items-center gap-4">
-            <ButtonLink href="/artigos">Explorar artigos</ButtonLink>
-            <ButtonLink href="/temas" variant="secondaryLight">
-              Ver temas
-            </ButtonLink>
+        <div className="container-measure relative flex min-h-[88vh] flex-col justify-end pb-16 pt-28 lg:justify-center lg:pb-24 lg:pt-32">
+          <div className="hero-copy relative max-w-xl lg:max-w-[38rem] xl:max-w-[40rem]">
+            <p className="hero-eyebrow font-sans text-xs font-bold uppercase tracking-[0.18em] sm:text-[0.8125rem]">
+              {siteConfig.name}
+            </p>
+            <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.08] tracking-tight text-paper-white sm:text-5xl lg:text-[3.5rem] xl:text-[3.85rem]">
+              Clareza sobre o que você vive — com profundidade psicanalítica.
+            </h1>
+            <p className="hero-lede mt-6 max-w-lg font-body text-lg leading-relaxed sm:text-xl">
+              Conceitos com densidade. Situações do cotidiano. Uma biblioteca para reconhecer
+              a própria vida — e saber o que fazer com o que se entendeu.
+            </p>
+            <div className="mt-9 flex flex-wrap items-center gap-4">
+              <ButtonLink href="/artigos">Explorar artigos</ButtonLink>
+              <ButtonLink href="/temas" variant="secondaryLight">
+                Ver temas
+              </ButtonLink>
+            </div>
           </div>
         </div>
       </section>
@@ -120,7 +121,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="container-measure grid gap-12 py-18 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:py-24">
+      <section className="container-measure grid gap-12 py-16 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:py-24">
         <Reveal>
           <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden">
             <Image
