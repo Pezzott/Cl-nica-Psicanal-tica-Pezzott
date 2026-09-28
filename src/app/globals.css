@@ -42,6 +42,31 @@ body {
     @apply prose prose-lg max-w-prose prose-headings:font-display prose-headings:text-ink prose-headings:font-semibold prose-p:font-body prose-p:text-ink-soft prose-li:font-body prose-li:text-ink-soft prose-a:text-sage-deep prose-strong:text-ink;
   }
 
+  /* Ritmo de livro: respiro tipográfico, aspas e divisores */
+  .prose-book {
+    @apply prose-headings:tracking-tight prose-h2:mt-14 prose-h2:mb-6 prose-h2:text-[1.85rem] prose-h3:mt-10 prose-h3:mb-4 prose-p:leading-[1.85] prose-p:my-5 prose-li:leading-[1.75] prose-hr:my-12;
+  }
+
+  .prose-book hr {
+    border-color: rgba(36, 52, 71, 0.12);
+  }
+
+  .prose-book > p:first-of-type {
+    @apply text-[1.2rem] leading-[1.8] text-ink sm:text-[1.28rem];
+  }
+
+  .prose-book blockquote {
+    @apply my-10 border-l-[3px] border-sage bg-transparent py-1 pl-6 pr-2 font-display text-xl font-medium leading-snug text-ink not-italic;
+  }
+
+  .prose-book blockquote p {
+    @apply my-0 text-ink;
+  }
+
+  .article-figure figcaption {
+    @apply border-l border-ink/15 pl-3;
+  }
+
   .reveal {
     @apply translate-y-5 opacity-0 transition duration-700 ease-out;
   }
